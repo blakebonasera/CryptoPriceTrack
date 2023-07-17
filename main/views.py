@@ -4,12 +4,9 @@ from .models import Coin
 # Create your views here.
 
 def fetchCoinData(request):
-    url = 'https://api.coinapi.io/v1/symbols'
-    headers = {
-        'X-CoinAPI-Key': '59B4DDDE-95FD-4054-B0EA-381081B01CDC'
-    }
-
-    response = requests.get(url,headers=headers)
+    url = 'https://rest.coinapi.io/v1/symbols'
+    headers = {'X-CoinAPI-Key' : '59B4DDDE-95FD-4054-B0EA-381081B01CDC'}
+    response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
         data = response.json()
@@ -25,7 +22,7 @@ def fetchCoinData(request):
 
         Coin.objects.bulk_create(coins)
 
-        return redirect(request,'/view')
+        return render(request,'success.html')
     else:
         return render(request,'error.html')
     
