@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 import requests
 from .models import Coin
 # Create your views here.
 
 def fetchCoinData(request):
-    url = 'https://api.coinapi.io/v1/assets'
+    url = 'https://api.coinapi.io/v1/symbols'
     headers = {
         'X-CoinAPI-Key': '59B4DDDE-95FD-4054-B0EA-381081B01CDC'
     }
@@ -17,9 +17,9 @@ def fetchCoinData(request):
 
         for coin_data in data:
             coin = Coin(
-                name = coin_data['name'],
+                name = coin_data['symbol_id'],
                 price = coin_data['price'],
-                market_cap =coin_data['market_cap_usd']
+                volume = coin_data['volume_1day_usd']
             )
             coins.append(coin)
 
