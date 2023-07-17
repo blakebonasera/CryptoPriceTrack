@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Data Fetch Successful</title>
+</head>
+<body>
+    <h1>Data fetched successfully from CoinAPI</h1>
+    <ul>
+        {% for Coin in viewCoin %}
+        <li>Coin: {{Coin.name}} Price: {{Coin.price}} Market Cap: {{Coin.market_cap}}</li>
+    </ul>
+
+</body>
+</html>
