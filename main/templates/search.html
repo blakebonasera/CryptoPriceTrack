@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search</title>
+</head>
+<body>
+    <form method="post" action="{% url 'coin-values' %}">
+        {% csrf_token %}
+        <input type="text" name="coin_symbol" placeholder="Enter coin symbol">
+        <input type="submit" value="Search">
+    </form>
+</body>
+</html>
