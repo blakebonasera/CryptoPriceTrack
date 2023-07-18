@@ -3,29 +3,21 @@ import requests
 from .models import Coin
 # Create your views here.
 
-def fetchCoinData(request):
-    url = 'https://rest.coinapi.io/v1/symbols'
+def coin_values(request):
+    url = 'https://rest.coinapi.io/v1/exchangerate/BTC/USD'  # Example request for Bitcoin to USD
     headers = {'X-CoinAPI-Key' : '59B4DDDE-95FD-4054-B0EA-381081B01CDC'}
+    
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
         data = response.json()
-        coins = []
+        coin_value = data['rate']  # Extract the coin value from the response data
 
-        for coin_data in data:
-            coin = Coin(
-                name = coin_data['symbol_id'],
-                price = coin_data['price'],
-                volume = coin_data['volume_1day_usd']
-            )
-            coins.append(coin)
-
-        Coin.objects.bulk_create(coins)
-
-        return render(request,'success.html')
+        # Pass the coin value to the template
+        return render(request, 'success.html', {'coin_value': coin_value})
     else:
-        return render(request,'error.html')
+        return render(request, 'error.html')
     
 def viewCoin(request):
-    all_coins = Coin.objects.all()
-    return render(request,'views.html', all_coins)
+    Coin.objects.all()
+    return render(request,'view.html')
