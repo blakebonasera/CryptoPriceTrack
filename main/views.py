@@ -27,5 +27,5 @@ def fetchCoinData(request):
         return render(request,'error.html')
     
 def viewCoin(request):
-    coins = Coin.objects.all()
-    return render(request,'views.html')
+    all_coins = Coin.objects.all()
+    return render(request,'views.html', all_coins)
