@@ -1,9 +1,31 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Coin Values</title>
+    <title>{{ coin_symbol }} USD Value</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .jumbotron{
+            padding: 5px;
+            background-color: blue;
+            text-align: center;
+        }
+        h1 {
+            color: white;
+        }
+        .container{
+            text-align: center;
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
-    <h1>{{ coin_symbol }} to USD Exchange Rate: {{ coin_value }}</h1>
+    <div class="jumbotron">
+        <h1>1 {{ coin_symbol }} in USD</h1>
+    </div>
+    <div class="container">
+        <h3>1 {{coin_symbol }} = ${{coin_value}}</h3>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>

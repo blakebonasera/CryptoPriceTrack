@@ -1,13 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Search</title>
+    <title>Search Crypto Prices</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        .jumbotron{
+            padding: 5px;
+            background-color: blue;
+            text-align: center;
+        }
+        h1 {
+            color: white;
+        }
+        .container{
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
-    <form method="post" action="{% url 'coin-values' %}">
-        {% csrf_token %}
-        <input type="text" name="coin_symbol" placeholder="Enter coin symbol">
-        <input type="submit" value="Search">
-    </form>
+    <div class="jumbotron jumbotron-fluid">
+        <h1>Search the symbol of your favorite cryptocurrency that you would like to know the current price of in USD.</h1>
+    </div>
+    <div class="container">
+        <h3>Use the symbol for the coin such as: BTC, ETH, SOL, MATIC</h3>
+        <div class="container">
+
+            <form method="post" action="{% url 'coin-values' %}">
+                {% csrf_token %}
+                <input type="text" name="coin_symbol" placeholder="Enter coin symbol">
+                <input class="btn btn-primary" type="submit" value="Search">
+            </form>
+        </div>
+    </div>
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 </body>
 </html>
